@@ -1,0 +1,30 @@
+---
+- name: Get directory
+  ios_command: 
+    commands: dir
+  register: dev_directory
+
+- name: Parse Directory
+  set_fact:
+    parse_dev_directory: "{{ dev_directory.stdout_lines[0] | string | regex_search('Directory of+\\s+\\w+') | regex_replace('Directory of+\\s', '') }}"
+
+- name: Activate Archive
+  ios_config:
+    lines:
+    - "path {{ parse_dev_directory }}:"
+    parents: archive
+
+# - name: facts to get default filesystem
+#   cisco.ios.ios_facts:
+#   register: facts
+
+# - name: activate archive path
+#   cisco.ios.ios_config:
+#     lines:
+#       - "path {{ facts.ansible_facts.ansible_net_filesystems[0] }}"
+#     parents:
+#       - archive
+
+- name: set timer
+  ios_command: 
+    commands: "configure terminal revert timer idle {{ timer }}"

@@ -1,0 +1,9 @@
+---
+
+galaxy_info:
+  author: Colin Wagner
+  description: Ansible Role to implement archive roll back
+  company: Chevron
+  role_name: config_archive_rollback
+
+dependencies:

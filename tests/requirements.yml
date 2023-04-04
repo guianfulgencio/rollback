@@ -1,0 +1,4 @@
+---
+- src: git+https://eqeb:Chevron123@dev.azure.com/chevron/TPS-ITC-AnsibleNetwork/_git/config_archive_rollback
+  name: config_archive_rollback
+  version: dev

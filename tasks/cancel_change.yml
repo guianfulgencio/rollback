@@ -1,0 +1,3 @@
+- name: configure revert now
+  ios_command:
+    commands: "configure revert now"
